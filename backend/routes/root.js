@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
-router.get("/", (request, response) => {
-    response.send("Hello world from within a route!");
-    })
+router.get("/", (_request, response) => {
+    const name = "My name";
+    response.render('root', { name });
+    });
 
 module.exports = router;
