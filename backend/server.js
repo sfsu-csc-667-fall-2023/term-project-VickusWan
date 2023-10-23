@@ -3,10 +3,17 @@ const express = require("express");
 const createError = require("http-errors");
 const requestTime = require("./middleware/request-time");
 const rootRoutes = require("./routes/root");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 
+app.use(morgan("dev"));
+
 app.use(requestTime);
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 const PORT = process.env.PORT || 3000;
 
